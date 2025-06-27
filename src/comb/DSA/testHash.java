@@ -1,10 +1,10 @@
-package test;
+package comb.DSA;
 
 import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class test {
+public class testHash {
     public static void main(String[] args) {
          String s = "anagram", t = "nagaram" ;
         System.out.println(checkAnagram(s, t));
