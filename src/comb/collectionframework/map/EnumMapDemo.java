@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class EnumMapDemo {
     public static void main(String[] args) {
-        Map<Day, String> map = new EnumMap<Day, String>(Day.class);
+        Map<Day, String> map = new EnumMap<>(Day.class);
         map.put(Day.TUESDAY, "Gym");
         map.put(Day.MONDAY, "Walk");
         map.put(Day.SUNDAY, "Rest");

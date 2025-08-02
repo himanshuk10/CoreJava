@@ -3,6 +3,7 @@ package test;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -133,6 +134,19 @@ public class Main {
 //                .mapToObj(c -> (char) c)
 //                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 //        System.out.println(wordCount);
+    }
+    static char firstNonRepeating(String str){
+        Map<Character, Integer> freq = new TreeMap<>();
+        for (char ch : str.toCharArray()){
+            freq.put(ch, freq.getOrDefault(ch, 0)+1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : freq.entrySet()){
+            if (entry.getValue() == 1){
+                return entry.getKey();
+            }
+        }
+        return ' ';
     }
 
 }

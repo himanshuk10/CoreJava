@@ -12,6 +12,7 @@ public class ItrDemo {
         list.add("john");
         list.add("adam");
 //        System.out.println(list);
+
         Iterator itr = list.iterator();
         while (itr.hasNext()){
             System.out.println(itr.next());

@@ -8,7 +8,10 @@ import java.util.stream.Collectors;
 public class RemoveDistinct {
     public static void main(String[] args) {
         List<String> name = new ArrayList<>(Arrays.asList("Himanshu", "Aman", "Anas", "Aman", "Walkar"));
-        List ans = name.stream().map(c -> c.toUpperCase()).distinct().collect(Collectors.toList());
+        List ans = name.stream().distinct().collect(Collectors.toList());
         System.out.println(ans);
+//        List<String> collect = name.stream().map(str -> str.toUpperCase()).distinct().collect(Collectors.toList());
+//        System.out.println(collect);
+
     }
 }

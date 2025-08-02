@@ -1,5 +1,7 @@
 package comb.java8Features.questions;
 
+import java.util.stream.Stream;
+
 public class SumOfDigits {
     public static void main(String[] args) {
         int n = 12345;
@@ -7,5 +9,10 @@ public class SumOfDigits {
                 .map(Character::getNumericValue)
                 .sum();
         System.out.println(sum);
+
+        int sum1 = Stream.of(String.valueOf(n).split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
+        System.out.println(sum1);
     }
 }
