@@ -1,6 +1,8 @@
 package comb.designpattern.singleton;
 
-public class SingletonExample {
+public class
+
+SingletonExample {
     /*
     //Eager initialization
     private static SingletonExample singletonExample = new SingletonExample();
@@ -13,7 +15,10 @@ public class SingletonExample {
 
     private static SingletonExample singletonExample;
     private SingletonExample(){
-        System.out.println("instance is created");
+        if (singletonExample != null) {
+            throw new RuntimeException("Use getInstance() method to create");
+        }
+        System.out.println("Instance is created");
     }
     public static SingletonExample getInstance(){
         if (singletonExample == null){
@@ -24,23 +29,9 @@ public class SingletonExample {
         }
         return singletonExample;
     }
-    public static void main(String[] args) {
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SingletonExample instance1 = SingletonExample.getInstance();
-                System.out.println(instance1.hashCode());
-            }
-        });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SingletonExample instance2 = SingletonExample.getInstance();
-                System.out.println(instance2.hashCode());
-            }
-        });
-        t1.start();
-        t2.start();
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        throw new CloneNotSupportedException("Cloning of this singleton is not allowed");
     }
 }

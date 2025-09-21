@@ -44,8 +44,20 @@ public class testHash {
         Map<Integer, Long> mapt = t.chars().boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         return maps.equals(mapt);
          */
-        boolean equals = s.chars().boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                .equals(t.chars().boxed().collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
-        return equals;
+//        boolean equals = s.chars()
+//                .boxed()
+//                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+//                .equals(t.chars()
+//                        .boxed()
+//                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+//        return equals;
+
+
+        return s.chars()
+                .mapToObj(c -> (char)c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .equals(t.chars()
+                        .mapToObj(c ->(char)c)
+                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
     }
 }

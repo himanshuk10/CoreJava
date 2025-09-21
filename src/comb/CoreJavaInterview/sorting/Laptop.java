@@ -1,6 +1,6 @@
 package comb.CoreJavaInterview.sorting;
 
-public class Laptop{
+public class Laptop implements Comparable<Laptop> {
 
     private String name;
     private int ram;
@@ -45,12 +45,14 @@ public class Laptop{
                 '}';
     }
 
-//    @Override
-//    public int compareTo(Laptop that) {
-//        if(this.ram > that.ram){
-//            return 1;
-//        }else{
-//            return -1;
-//        }
-//    }
+    @Override
+    public int compareTo(Laptop that) {
+        if(this.ram > that.ram){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
 }
+
+

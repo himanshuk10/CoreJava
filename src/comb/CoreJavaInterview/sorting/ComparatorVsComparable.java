@@ -9,7 +9,7 @@ public class ComparatorVsComparable {
         System.out.println(list);
 
         List<Laptop> laptops = new ArrayList<>();
-        laptops.add(new Laptop("Hp",16, 700));
+        laptops.add(new Laptop("Hp",16, 900));
         laptops.add(new Laptop("Apple",8, 1200));
         laptops.add(new Laptop("Dell",12, 800));
 
@@ -34,24 +34,28 @@ public class ComparatorVsComparable {
                 }
             }
         };
-
-        //sort on the basic of length of name
-
-        Comparator<Laptop> comparator1 = new Comparator<Laptop>() {
-            @Override
-            public int compare(Laptop lap1, Laptop lap2) {
-                if(lap1.getName().length() > lap2.getName().length()){
-                    return 1;
-                }else {
-                    return -1;
-                }
-            }
-        };
-
-        Collections.sort(laptops,comparator1);
+        Collections.sort(laptops, comparator);
         for (Laptop lap: laptops) {
             System.out.println(lap);
        }
+
+        //sort on the basic of length of name
+
+//        Comparator<Laptop> comparator1 = new Comparator<Laptop>() {
+//            @Override
+//            public int compare(Laptop lap1, Laptop lap2) {
+//                if(lap1.getName().length() > lap2.getName().length()){
+//                    return 1;
+//                }else {
+//                    return -1;
+//                }
+//            }
+//        };
+
+//        Collections.sort(laptops,comparator);
+//        for (Laptop lap: laptops) {
+//            System.out.println(lap);
+//       }
 
 //        List<LaptopExternal> laptops = new ArrayList<>();
 //        laptops.add(new LaptopExternal("Hp",16, 700));
@@ -77,5 +81,5 @@ public class ComparatorVsComparable {
 }
 //                  comparable                          comparator
 //comparable provide single Merge.sorting sequence - comparator provide multiple Merge.sorting sequence
-//it changes the actual class definition     - it doen not changes class definition
+//it changes the actual class definition     - it does not change class definition
 // having compareTo() method                 - having compare() method

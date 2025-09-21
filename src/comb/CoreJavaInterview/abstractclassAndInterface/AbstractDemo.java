@@ -38,6 +38,7 @@ public class AbstractDemo {
     public static void main(String[] args) {
         Dog dog = new Dog("Tommy");
         dog.makesound();
-//        dog.eat();
+        dog.eat();
+
     }
 }

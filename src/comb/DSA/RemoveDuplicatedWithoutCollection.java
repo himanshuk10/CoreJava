@@ -9,7 +9,8 @@ import java.util.Set;
 public class RemoveDuplicatedWithoutCollection {
     public static void main(String[] args) {
         int[] arr = {2,3,4,5,3,4,5};
-        System.out.println(Arrays.toString(unique(arr)));
+//        System.out.println(Arrays.toString(unique(arr)));
+        System.out.println(Arrays.toString(removeDuplicate(arr)));
     }
     static int[] unique(int[] arr){
         int n = arr.length;
@@ -39,6 +40,19 @@ public class RemoveDuplicatedWithoutCollection {
             }
         }
         return Arrays.copyOf(temp, count);
-
+    }
+    static int[] removeDuplicate(int[] arr){
+        int n = arr.length;
+        Arrays.sort(arr);
+        int[] temp = new int[n];
+        int k = 0;
+        for (int i = 0; i < n-1; i++) {
+            if (arr[i] != arr[i+1]){
+                temp[k++] = arr[i];
+            }
+        }
+        temp[k++] = arr[n-1];
+        int[] res = Arrays.copyOf(temp, k);
+        return res;
     }
 }

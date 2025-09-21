@@ -1,8 +1,8 @@
 package comb.collectionframework;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
@@ -26,5 +26,35 @@ public class FailSafevsFailFast {
             }
         }
         System.out.println("..........."+names);
+
+        System.out.println("Map..............................................");
+
+
+        Map<String, Integer> map = new ConcurrentHashMap<>();
+        map.put("Charlie", 1234);
+        map.put("Bob", 123);
+        map.put("Alice", 234);
+        map.put("John", 45);
+//
+//        Iterator<Map.Entry<String, Integer>> itrMap = map.entrySet().iterator();
+//        while (itrMap.hasNext()){
+//            Map.Entry<String, Integer> entry = itrMap.next();
+//            System.out.println("Processing with iterator - " + entry.getKey());
+//            if (entry.getKey().equals("Bob")){
+//                itrMap.remove();
+//            }
+//        }
+//        System.out.println("after safe removal" + map);
+
+        Iterator<Map.Entry<String, Integer>> itrMap = map.entrySet().iterator();
+        while (itrMap.hasNext()){
+            Map.Entry<String, Integer> entry = itrMap.next();
+            System.out.println(entry.getKey() +" : "+entry.getValue());
+            if (!entry.getKey().equals("Aman")){
+                map.put("Aman", 23456);
+            }
+        }
+
+        System.out.println(map);
     }
 }

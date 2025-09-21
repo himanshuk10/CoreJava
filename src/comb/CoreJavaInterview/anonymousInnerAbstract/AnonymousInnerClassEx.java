@@ -19,6 +19,5 @@ public class AnonymousInnerClassEx {
             }
         };
         obj.show();
-
     }
 }

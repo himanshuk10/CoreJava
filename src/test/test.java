@@ -1,43 +1,34 @@
 package test;
 
-import comb.collectionframework.map.GC;
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class test {
-    public static void main(String[] args){
-
-//        Map<String, String> map = new LinkedHashMap<>();
-//        map.put("Himanshu", "Add: Bihar, mob : 7763077990");
-//        map.put("Aman","Add: Bihar, mob : 7763077990");
-//        for (Map.Entry<String, String> entry : map.entrySet()){
-//            System.out.println(entry.getKey());
-//        }
-        test();
+    public static void main(String[] args) {
+        generateUsernames(1000);
+//        mapVsFlatMap();
+//        partitionBy();
     }
-    static void test(){
-        Map<String, Integer> map = new HashMap<>();
-        map.put("Himanshu", 123);
-        map.put("Aman", 234);
-        map.put("Anish", 45);
-        map.put("Rahul", 1);
-        map.put("Pkus", 11);
-        System.out.println("usinh hashmap: "+map);
-
-        Map<String, Integer> map1 = new LinkedHashMap<>();
-        map1.put("Himanshu", 123);
-        map1.put("Aman", 234);
-        map1.put("Anish", 45);
-        map1.put("Rahul", 1);
-        map1.put("Pkus", 11);
-        System.out.println("using linked hashmap: "+map1);
-
-        Map<String, Integer> map2 = new TreeMap<>();
-        map2.put("Himanshu", 123);
-        map2.put("Aman", 234);
-        map2.put("Anish", 45);
-        map2.put("Rahul", 1);
-        map2.put("Pkus", 11);
-        System.out.println("using Tree map: "+map2);
+    public static void generateUsernames(int n) {
+        String format = "%05d";
+        for (int i = 1; i <= n; i++) {
+            String str = "himanshu"+String.format(format,i);
+            System.out.println(str);
+        }
+    }
+    public static void mapVsFlatMap(){
+        List<Integer> list = Arrays.asList(1,2,3,4);
+        List<Integer> list1 = list.stream().map(num -> num * 2).toList();
+        System.out.println(list1);
+        List<List<Integer>> list2 = Arrays.asList(Arrays.asList(1,2,3,4,5), Arrays.asList(9,7,5,6));
+        List<Integer> list3 = list2.stream().flatMap(Collection::stream).map(num -> num * 2).toList();
+        System.out.println(list3);
+    }
+    public static void partitionBy(){
+        List<Integer> list = List.of(1,2,3,4,5,6,7);
+        Map<Boolean, List<Integer>> collect = list.stream().collect(Collectors.partitioningBy(num -> num % 2 == 0));
+        Map<String, List<Integer>> collect1 = collect.entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey() ? "EVEN" : "ODD",
+                Map.Entry::getValue));
+        System.out.println(collect1);
     }
 }

@@ -1,6 +1,8 @@
 package comb.designpattern.prototype;
 
-public class Vehicle implements Cloneable{
+public class
+
+Vehicle implements Cloneable{
     private String type;
     public Vehicle(String type){
         this.type = type;

@@ -32,6 +32,7 @@ public class DemonThreadDemo {
         });
 
 
+
         thread1.start();
         demonThread.setDaemon(true);
         demonThread.start();
