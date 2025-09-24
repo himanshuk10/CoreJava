@@ -1,13 +1,17 @@
 package test;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class test {
     public static void main(String[] args) {
-        generateUsernames(1000);
+//        generateUsernames(1000);
 //        mapVsFlatMap();
 //        partitionBy();
+//        countFreq();
+        moveZero();
     }
     public static void generateUsernames(int n) {
         String format = "%05d";
@@ -30,5 +34,33 @@ public class test {
         Map<String, List<Integer>> collect1 = collect.entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey() ? "EVEN" : "ODD",
                 Map.Entry::getValue));
         System.out.println(collect1);
+    }
+    public static void countFreq(){
+        String str = "ASDFGHJSDFGHJ ";
+        Map<String, Long> frequency = Arrays.stream(str.split(""))
+                .filter(s -> !s.equals(" "))
+                .map(String::toLowerCase)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(frequency);
+    }
+    public static void moveZero(){
+        int[] arr = {1,0,2,3,0,9,0,2,3};
+        int idx = arr.length-1;
+//        for (int num : arr){
+//            if (num != 0){
+//                arr[idx++] = num;
+//            }
+//        }
+        for (int i = arr.length-1; i >=0 ; i--) {
+            if (arr[i] != 0){
+
+
+                arr[idx--] = arr[i];
+            }
+        }
+        while (idx >= 0){
+            arr[idx--] = 0;
+        }
+        System.out.println(Arrays.toString(arr));
     }
 }
