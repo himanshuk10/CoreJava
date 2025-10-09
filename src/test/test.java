@@ -10,8 +10,8 @@ public class test {
 //        generateUsernames(1000);
 //        mapVsFlatMap();
 //        partitionBy();
-//        countFreq();
-        moveZero();
+        countFreq();
+//        moveZero();
     }
     public static void generateUsernames(int n) {
         String format = "%05d";
@@ -37,11 +37,17 @@ public class test {
     }
     public static void countFreq(){
         String str = "ASDFGHJSDFGHJ ";
-        Map<String, Long> frequency = Arrays.stream(str.split(""))
-                .filter(s -> !s.equals(" "))
-                .map(String::toLowerCase)
+//        Map<String, Long> frequency = Arrays.stream(str.split(""))
+//                .filter(s -> !s.equals(" "))
+//                .map(String::toLowerCase)
+//                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+//        System.out.println(frequency);
+
+        Map<Character, Long> collect = str.chars()
+                .mapToObj(c -> (char) c)
+                .filter(c -> c!=' ')
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        System.out.println(frequency);
+        System.out.println(collect);
     }
     public static void moveZero(){
         int[] arr = {1,0,2,3,0,9,0,2,3};

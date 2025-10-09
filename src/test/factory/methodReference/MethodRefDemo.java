@@ -1,6 +1,4 @@
-package test.factory.mr;
-
-import java.util.Comparator;
+package test.factory.methodReference;
 
 class Message {
     public static void show() {
